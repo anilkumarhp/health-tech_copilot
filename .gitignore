@@ -1,0 +1,77 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# Logs
+logs/
+*.log
+
+# Data directories - keep structure but ignore all contents
+data/chroma/
+data/processed/
+data/uploads/
+!data/chroma/.gitkeep
+!data/processed/.gitkeep
+!data/uploads/.gitkeep
+htmlcov/
+.coverage
+.pytest_cache/
+
+# Documentation (except README.md)
+docs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# ChromaDB
+chroma/
+*.db
+*.sqlite
+
+# Temporary files
+*.tmp
+*.temp
+
+# Test files
+test_*.py
+!tests/
+
+# Cache service for testing only
+services/cache_service_simple.py
