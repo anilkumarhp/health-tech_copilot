@@ -278,14 +278,4 @@ pytest --cov=. --cov-report=html
 - ✅ Performance monitoring and metrics
 
 ---
-
-## Contact & Support
-
-**Technical Lead:** [Your Name]  
-**Email:** [your.email@domain.com]  
-**LinkedIn:** [Your LinkedIn Profile]  
-**Portfolio:** [Your Portfolio URL]  
-
----
-
 **Project Status:** Production-ready MVP demonstrating enterprise-grade healthcare AI capabilities. Architected for scalability, security, and compliance with modern healthcare technology standards.**
