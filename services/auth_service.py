@@ -7,6 +7,7 @@ import jwt
 from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional
 from passlib.context import CryptContext
+from passlib.hash import argon2
 from fastapi import HTTPException, Depends, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from loguru import logger

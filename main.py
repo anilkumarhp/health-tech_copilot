@@ -10,7 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response
 from loguru import logger
 
-from api.v1 import documents, queries, system, agents, multi_agents
+from api.v1 import documents, queries, system, agents, multi_agents, evaluation
 from models.schemas import HealthCheckResponse
 from services.document_service import DocumentProcessor
 from services.query_service import QueryService
@@ -63,6 +63,7 @@ try:
     app.include_router(system.router)
     app.include_router(agents.router)
     app.include_router(multi_agents.router)
+    app.include_router(evaluation.router)
     
     logger.info("All services initialized successfully")
 except Exception as e:

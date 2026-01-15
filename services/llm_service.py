@@ -1,9 +1,10 @@
 """
 LLM Service for Healthcare Copilot using Ollama.
-Provides LLM integration for intelligent agent responses.
+Provides LLM integration for intelligent agent responses with guardrails and evaluation.
 """
 
 import json
+import time
 from typing import Dict, List, Optional
 from langchain_ollama import ChatOllama
 from langchain_core.messages import HumanMessage, SystemMessage
@@ -12,13 +13,16 @@ from loguru import logger
 
 from utils.config import settings
 from utils.exceptions import QueryProcessingError
+from services.guardrails_service import GuardrailsService
+from services.evaluation_service import EvaluationService
+from services.audit_service import AuditLogger
 
 
 class LLMService:
     """Service for LLM operations using Ollama."""
     
     def __init__(self):
-        """Initialize LLM service with Ollama."""
+        """Initialize LLM service with Ollama and safety services."""
         try:
             self.llm = ChatOllama(
                 base_url=settings.ollama_base_url,
@@ -26,6 +30,12 @@ class LLMService:
                 temperature=settings.ollama_temperature,
                 timeout=settings.ollama_timeout
             )
+            
+            # Initialize safety and evaluation services
+            self.guardrails = GuardrailsService()
+            self.evaluator = EvaluationService()
+            self.audit_logger = AuditLogger()
+            
             logger.info(f"LLM service initialized with Ollama model: {settings.ollama_model}")
         except Exception as e:
             logger.error(f"Failed to initialize LLM service: {str(e)}")
@@ -277,3 +287,16 @@ Which agent should handle this query?"""
             return bool(test_response.content)
         except Exception:
             return False
+    
+    def get_evaluation_metrics(self) -> Dict:
+        """Get aggregate evaluation metrics."""
+        return self.evaluator.get_aggregate_metrics()
+    
+    def get_guardrails_status(self) -> Dict:
+        """Get guardrails service status."""
+        return {
+            'enabled': True,
+            'pii_detection': True,
+            'content_safety': True,
+            'output_validation': True
+        }

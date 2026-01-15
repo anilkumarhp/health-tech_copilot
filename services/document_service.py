@@ -10,7 +10,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional
 
-import PyPDF2
+import pypdf
+from pypdf import PdfReader
 from loguru import logger
 
 from utils.config import settings
@@ -118,7 +119,7 @@ class DocumentProcessor:
             text_content = []
             
             with open(file_path, 'rb') as file:
-                pdf_reader = PyPDF2.PdfReader(file)
+                pdf_reader = PdfReader(file)
                 
                 for page_num, page in enumerate(pdf_reader.pages):
                     try:
