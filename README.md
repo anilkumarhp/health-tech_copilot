@@ -123,8 +123,8 @@ Healthcare AI Copilot is an enterprise-grade intelligent assistant designed to s
 
 The API is documented using FastAPI's automatic OpenAPI generation.
 
-* **Live Documentation:** `http://localhost:8000/docs` (Swagger UI)
-* **Alternative Docs:** `http://localhost:8000/redoc` (ReDoc)
+* **Interactive Documentation:** `http://localhost:8000/docs` (Swagger UI)
+* **Alternative Documentation:** `http://localhost:8000/redoc` (ReDoc)
 * **Health Check:** `http://localhost:8000/health`
 * **Metrics:** `http://localhost:8000/metrics` (Prometheus format)
 
@@ -234,7 +234,8 @@ pytest --cov=. --cov-report=html
 ### **Why ChromaDB for Vector Storage?**
 - **Simplicity:** No external vector database setup required
 - **Performance:** Fast semantic search for policy document retrieval
-- **Local Development:** Works offline without cloud dependencies
+- **Data Privacy:** Local deployment ensures sensitive healthcare data remains on-premises
+- **HIPAA Compliance:** Offline operation eliminates external data transmission risks
 
 ### **Why Ollama over OpenAI API?**
 - **Privacy:** Healthcare data stays local, no external API calls
